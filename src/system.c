@@ -201,10 +201,10 @@ static int      chk_dirp( const char ** dirp);
 #endif
 static void     cur_file( FILEINFO * file, FILEINFO * sharp_file, int marker);
                 /* Output current source file name  */
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
 static char *   bsl2sl( char * filename);
                 /* Convert \ to / in path-list      */
-#endif
+// #endif
 static int      is_junk( void);
                 /* The directive has trailing junk? */
 static void     do_once( const char * fullname);
@@ -450,9 +450,9 @@ void    do_options(
 
     /* Get current directory for -I option and #pragma once */
     getcwd( cur_work_dir, PATHMAX);
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
     bsl2sl( cur_work_dir);
-#endif
+// #endif
     sprintf( cur_work_dir + strlen( cur_work_dir), "%c%c", PATH_DELIM, EOS);
         /* Append trailing path-delimiter   */
 
@@ -2145,17 +2145,17 @@ static char *   set_files(
 
     if (*in_pp == NULL) {                           /* Input file   */
         cp = argv[ mcpp_optind++];
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
         cp = bsl2sl( cp);
-#endif
+// #endif
         *in_pp = cp;
     }
     if (mcpp_optind < argc && argv[ mcpp_optind][ 0] != '-'
             && *out_pp == NULL) {
         cp = argv[ mcpp_optind++];
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
         cp = bsl2sl( cp);
-#endif
+// #endif
         *out_pp = cp;                               /* Output file  */
     }
     if (mcpp_optind >= argc)
@@ -2528,9 +2528,9 @@ static char *   norm_path(
     len = strlen( slbuf1);
     start = norm_name = xmalloc( len + 1);  /* Need a new buffer    */
     strcpy( norm_name, slbuf1);
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
     bsl2sl( norm_name);
-#endif
+// #endif
 #if SPECIAL_PATH_DELIM                  /* ':' ?    */
     for (cp1 = norm_name; *cp1 != EOS; cp1++) {
         if (*cp1 == PATH_DELIM)
@@ -2657,9 +2657,9 @@ static char *   norm_path(
         char    debug_buf[ PATHMAX+1];
         strcpy( debug_buf, dir);
         strcat( debug_buf, fname ? fname : null);
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
         bsl2sl( debug_buf);
-#endif
+// #endif
         if (! str_eq( debug_buf, norm_name))
             mcpp_fprintf( DBG, "Normalized the path \"%s\" to \"%s\"\n"
                     , debug_buf, norm_name);
@@ -3161,9 +3161,9 @@ found_name:
         }
     }
 
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
     bsl2sl( fname);
-#endif
+// #endif
     filename = fname;
 #if NO_DIR                              /* Unofficial feature           */
     if (no_dir) {                       /* Strip directory components   */
@@ -3968,7 +3968,7 @@ static void cur_file(
 #endif
 }
 
-#if SYS_FAMILY == SYS_WIN
+// #if SYS_FAMILY == SYS_WIN
 
 static char *   bsl2sl(
     char * filename
@@ -4010,7 +4010,7 @@ static char *   bsl2sl(
     return  filename;
 }
 
-#endif  /* SYS_FAMILY == SYS_WIN    */
+// #endif  /* SYS_FAMILY == SYS_WIN    */
 
 static const char * const   unknown_arg =
         "Unknown argument \"%s\"";      /*_W1_*/
