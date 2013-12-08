@@ -303,7 +303,7 @@ static char *   mkdep_mt;               /* Argument of -MT option   */
 /* sharp_filename is filename for #line line, used only in cur_file()   */
 static char *   sharp_filename = NULL;
 static char *   argv0;      /* argv[ 0] for usage() and version()   */
-static int      ansi;           /* __STRICT_ANSI__ flag for GNUC    */ 
+static int      ansi;           /* __STRICT_ANSI__ flag for GNUC    */
 static int      compat_mode;
                 /* "Compatible" mode of recursive macro expansion   */
 #define MAX_ARCH_LEN    16
@@ -530,7 +530,7 @@ plus:
                 compat_mode = TRUE;     /* 'compatible' mode        */
                 mcpp_mode = STD;
             }
-            else 
+            else
                 usage( opt);
             standard = (mcpp_mode == STD || mcpp_mode == POST_STD);
             if (old_mode != STD && old_mode != mcpp_mode)
@@ -837,7 +837,7 @@ plus:
             /* Fall through */
         case 'k':
             option_flags.k = TRUE;
-            /* Keep white spaces of input lines as they are */ 
+            /* Keep white spaces of input lines as they are */
             break;
 
 #if COMPILER == GNUC
@@ -1371,9 +1371,9 @@ static void version( void)
 #endif
 
 #ifdef  VERSION_MSG
-        "MCPP V.2.7.2 (2008/11) "
+        "MCPP V.2.7.2-mblsha (2008/11) "
 #else
-        "MCPP V.", VERSION, " (", DATE, ") "
+        "MCPP V.", VERSION, "-mblsha (", DATE, ") "
 #endif
 #if     COMPILER == INDEPENDENT
             , "compiler-independent-build "
@@ -1739,7 +1739,7 @@ static void def_a_macro(
     skip_nl();                      /* Clear the appended <newline> */
 }
 
-static void     chk_opts( 
+static void     chk_opts(
     int     sflag,      /* Flag of Standard or post-Standard mode   */
     int     trad                    /* -traditional (GCC only)      */
 )
@@ -2239,7 +2239,7 @@ static void set_sys_dirs(
     set_a_dir( "/usr/local/include");
 #endif
 
-#ifdef  C_INCLUDE_DIR1 
+#ifdef  C_INCLUDE_DIR1
     set_a_dir( C_INCLUDE_DIR1);
 #endif
 #ifdef  C_INCLUDE_DIR2
@@ -2301,7 +2301,7 @@ static void set_a_dir(
 #if SYSTEM == SYS_MAC
         to_search_framework = &incdir[ framework_pos];
 #endif
-        max_inc *= 2;                   
+        max_inc *= 2;
     }
 
     if (dirname == NULL)
@@ -2392,7 +2392,7 @@ static char *   norm_dir(
         if (! norm_name && option_flags.v)
             mcpp_fprintf( ERR, "Invalid header map file \"%s\" is ignored\n"
                     , dirname);
-    } else 
+    } else
 #endif
     {
         norm_name = norm_path( dirname, NULL, FALSE, FALSE);
@@ -2642,7 +2642,7 @@ static char *   norm_path(
             } else {                                /* Impossible   */
                 break;
             }
-        } else {                                    /* Impossible   */ 
+        } else {                                    /* Impossible   */
             break;
         }
     }
@@ -2769,7 +2769,7 @@ static void init_gcc_macro( void)
                 && scan_token( skip_ws(), (tp = work_buf, &tp), work_end)
                         == NAM
                     && str_eq( work_buf, "define")) {
-                defp = do_define( TRUE, nargs);     /* Ignore re-definition */ 
+                defp = do_define( TRUE, nargs);     /* Ignore re-definition */
             }
             skip_nl();
         }
@@ -2981,7 +2981,7 @@ void    put_depend(
 }
 
 static char *   md_init(
-    const char *    filename,   /* The source file name             */ 
+    const char *    filename,   /* The source file name             */
     char *  output              /* Output to dependency file        */
 )
 /*
@@ -3288,7 +3288,7 @@ static int  has_directory(
 )
 /*
  * If a directory is found in the 'source' filename string (i.e. "includer"),
- * the directory part of the string is copied to 'directory' and 
+ * the directory part of the string is copied to 'directory' and
  * has_directory() returns TRUE.
  * Else, nothing is copied and it returns FALSE.
  */
@@ -3432,7 +3432,7 @@ search:
         return  FALSE;
     if (standard && included( fullname))        /* Once included    */
         goto  true;
-        
+
     if ((max_open != 0 && max_open <= include_nest)
                             /* Exceed the known limit of open files */
             || ((fp = fopen( fullname, "r")) == NULL && errno == EMFILE)) {
@@ -3462,7 +3462,7 @@ search:
         }
         if (max_open == 0)      /* Remember the limit of the system */
             max_open = include_nest;
-    } else if (fp == NULL)                  /* No read permission   */ 
+    } else if (fp == NULL)                  /* No read permission   */
         goto  false;
     /* Truncate buffer of the includer to save memory   */
     len = (int) (file->bptr - file->buffer);
@@ -3534,7 +3534,7 @@ void    add_file(
     FILEINFO *      file;
     const char *    too_many_include_nest =
             "More than %.0s%ld nesting of #include";    /* _F_ _W4_ */
-            
+
     //
     // When encoding is UTF-8, skip BOM if present.
     //
@@ -3788,7 +3788,7 @@ static int      search_framework(
             return  TRUE;
     }
 
-    *cp2 = PATH_DELIM;      /* Restore original include file format */ 
+    *cp2 = PATH_DELIM;      /* Restore original include file format */
 
     return  FALSE;
 }
