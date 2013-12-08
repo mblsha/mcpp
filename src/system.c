@@ -3538,7 +3538,7 @@ void    add_file(
     //
     // When encoding is UTF-8, skip BOM if present.
     //
-    if(mbchar == UTF8 && fp != NULL && ftell(fp) == 0)
+    if(fp != NULL && ftell(fp) == 0)
     {
         const unsigned char UTF8_BOM[3] = {0xEF, 0xBB, 0xBF};
         unsigned char FILE_HEAD[3] = {0, 0, 0};
