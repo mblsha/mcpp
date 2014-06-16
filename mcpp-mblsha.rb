@@ -9,8 +9,7 @@ class McppMblsha < Formula
   def install
     ENV['MACOSX_DEPLOYMENT_TARGET'] = '10.6'
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}",
-                          "--enable-mcpplib"
+                          "--prefix=#{prefix}"
     system "make install"
   end
 end
